@@ -1,0 +1,18 @@
+import sys
+current_product = None
+count = 0
+
+for line in sys.stdin:
+    line = line.strip()
+    product, value = line.split("\t")
+
+    if current_product == product:
+        count += int(value)
+    else:
+        if current_product:
+            print current_product, count
+        current_product = product
+        count = int(value)
+
+if current_product:
+    print current_product, count
